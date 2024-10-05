@@ -9,15 +9,9 @@ M.ui = {
 	theme = "gatekeeper",
 
 	 hl_override = {
-	 	Comment = { italic = true },
+	 	Comment = { italic = true , fg = "pink" },
 	 	["@comment"] = { italic = true, fg = "pink"},
 	},
--- hl_add = {
---        ["@comment"] =  { link = "Comment" }, 
---        ["@comment.lua"] =  { fg = "pink" }, 
---        ["@comment.python"] =  { fg = "red" },
---        ["@comment.rust"] = { fg  = "red"}
---     },
   transparency=true,
 }
 M.plugins = 'custom.plugins'
