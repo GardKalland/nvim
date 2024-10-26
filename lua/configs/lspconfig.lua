@@ -1,3 +1,4 @@
+
 -- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
@@ -15,6 +16,14 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
+
+-- configuring svelte separately due to binary name
+lspconfig.svelte.setup {
+  cmd = { "svelteserver", "--stdio" }, -- Using the correct binary name
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
 
 -- configuring single server, example: typescript
 lspconfig.ts_ls.setup {

@@ -12,6 +12,20 @@ return {
       require "configs.lspconfig"
     end,
   },
+
+  {
+    "numToStr/Comment.nvim",
+    opts = {
+      toggler = {
+        line = 'gcc', -- toggle line comment
+        block = 'gbc', -- toggle block comment
+      },
+      opleader = {
+        line = 'gc', -- line comment in visual mode
+        block = 'gb', -- block comment in visual mode
+      },
+    },
+  },
   {
     "williamboman/mason.nvim",
     opts = {
