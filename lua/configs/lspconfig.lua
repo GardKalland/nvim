@@ -1,4 +1,3 @@
-
 -- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
@@ -17,9 +16,9 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- configuring svelte separately due to binary name
+-- configuring svelte separately with the correct command
 lspconfig.svelte.setup {
-  cmd = { "svelteserver", "--stdio" }, -- Using the correct binary name
+  cmd = { "svelte-language-server", "--stdio" }, -- Ensure this matches the installed binary
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,

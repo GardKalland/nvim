@@ -1,3 +1,4 @@
+
 return {
   {
     "stevearc/conform.nvim",
@@ -5,7 +6,6 @@ return {
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -26,6 +26,7 @@ return {
       },
     },
   },
+
   {
     "williamboman/mason.nvim",
     opts = {
@@ -63,6 +64,7 @@ return {
       }
     end,
   },
+
   {
     "kyazdani42/nvim-web-devicons",
     config = function()
@@ -71,6 +73,7 @@ return {
       }
     end,
   },
+
   {
     "github/copilot.vim",
     event = "InsertEnter",
@@ -79,10 +82,9 @@ return {
     end,
     lazy = false,
   },
-},
-  require("telescope").setup {
-    defaults = {
-      file_ignore_patterns = { "node_modules" }, -- You can adjust this if you want to exclude certain folders
-      find_command = { "rg", "--hidden", "--files" }, -- This ensures hidden files are shown
-    },
-  }
+
+  {
+    "leafOfTree/vim-svelte-plugin",
+    ft = { "svelte" },
+  },
+}
