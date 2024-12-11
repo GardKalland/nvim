@@ -16,7 +16,6 @@ map("i", "jk", "<ESC>")
 map("n", "<Leader>h", ":split<CR>", { desc = "Split horizontal" })
 map("n", "<Leader>v", ":vsplit<CR>", { desc = "Split vertical" })
 map("n", "<Leader>cc", ":close<CR>", { desc = "Close current window" })
-map("n", "<Leader>tt", ":split | :terminal<CR>", { desc = "Open terminal window" })
 map("n", "<Leader>q", ":q<CR>", { desc = "Close current tab window" })
 map("n", "<Leader>ww", ":w<CR>", { desc = "Save current file" })
 
@@ -25,3 +24,10 @@ map("n", "<Leader>tn", "<Cmd>tabnext<CR>", { desc = "Move to the next tab" })
 map("n", "<Leader>tp", "<Cmd>tabprevious<CR>", { desc = "Move to the previous tab" })
 map("n", "<Leader>t1", "1gt", { desc = "Move to the first tab" })
 map("n", "<Leader>t2", "2gt", { desc = "Move to the second tab" })
+
+
+-- Open folder
+map("n", "<Leader>of", function()
+  local dir = vim.fn.expand("%:p:h")
+  vim.cmd("!open " ..dir)
+end, { desc = "Open current file directory in Finder" })

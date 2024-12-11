@@ -49,8 +49,20 @@ return {
         "vimdoc",
         "html",
         "css",
+        "typescript",
+        "svelte",
       },
+      highlight = { enable = true}
     },
+  },
+
+  {
+  "folke/trouble.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+  },
   },
 
   {
@@ -58,13 +70,21 @@ return {
     requires = { "nvim-tree/nvim-web-devicons" }, -- optional, for file icons
     config = function()
       require("nvim-tree").setup {
+        git = {
+          enable = true, -- Enable Git integration
+          ignore = false, -- Do not exclude files listed in .gitignore
+        },
         filters = {
-          dotfiles = false, -- Set to true if you want to hide dotfiles
+          dotfiles = true, -- Show dotfiles
+          custom = {}, -- Ensure no custom filters
+        },
+        update_focused_file = {
+          enable = true,
+          update_cwd = true,
         },
       }
     end,
   },
-
   {
     "kyazdani42/nvim-web-devicons",
     config = function()
