@@ -25,9 +25,8 @@ map("n", "<Leader>tp", "<Cmd>tabprevious<CR>", { desc = "Move to the previous ta
 map("n", "<Leader>t1", "1gt", { desc = "Move to the first tab" })
 map("n", "<Leader>t2", "2gt", { desc = "Move to the second tab" })
 
-
 -- Open folder
 map("n", "<Leader>of", function()
-  local dir = vim.fn.expand("%:p:h")
-  vim.cmd("!open " ..dir)
-end, { desc = "Open current file directory in Finder" })
+  local dir = vim.fn.expand "%:p:h"
+  vim.cmd("!open " .. dir)
+end, { desc = "Open current Folder in finder" })
