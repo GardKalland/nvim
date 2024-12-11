@@ -1,4 +1,3 @@
-
 return {
   {
     "stevearc/conform.nvim",
@@ -17,12 +16,12 @@ return {
     "numToStr/Comment.nvim",
     opts = {
       toggler = {
-        line = 'gcc', -- toggle line comment
-        block = 'gbc', -- toggle block comment
+        line = "gcc", -- toggle line comment
+        block = "gbc", -- toggle block comment
       },
       opleader = {
-        line = 'gc', -- line comment in visual mode
-        block = 'gb', -- block comment in visual mode
+        line = "gc", -- line comment in visual mode
+        block = "gb", -- block comment in visual mode
       },
     },
   },
@@ -41,6 +40,10 @@ return {
   },
 
   {
+    "lewis6991/gitsigns.nvim",
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
@@ -52,17 +55,17 @@ return {
         "typescript",
         "svelte",
       },
-      highlight = { enable = true}
+      highlight = { enable = true },
     },
   },
 
   {
-  "folke/trouble.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-  },
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+    },
   },
 
   {
