@@ -11,7 +11,16 @@ return {
       require "configs.lspconfig"
     end,
   },
-
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false, -- Load immediately
+    config = function()
+      -- Optional:
+      vim.g.tmux_navigator_disable_when_zoomed = 1 -- Disable navigation when a Tmux pane is zoomed
+      vim.g.tmux_navigator_preserve_zoom = 1 -- Ensure zoom state is preserved when navigating
+      vim.g.tmux_navigator_save_on_switch = 1 -- Save the Neovim state before switching panestional config if needed
+    end,
+  },
   {
     "numToStr/Comment.nvim",
     opts = {

@@ -30,3 +30,10 @@ map("n", "<Leader>of", function()
   local dir = vim.fn.expand "%:p:h"
   vim.cmd("!open " .. dir)
 end, { desc = "Open current Folder in finder" })
+
+-- Tmux Navigator Mappings
+map("n", "<C-h>", ":TmuxNavigateLeft<CR>", { noremap = true, silent = true })
+map("n", "<C-j>", ":TmuxNavigateDown<CR>", { noremap = true, silent = true })
+map("n", "<C-k>", ":TmuxNavigateUp<CR>", { noremap = true, silent = true })
+map("n", "<C-l>", ":TmuxNavigateRight<CR>", { noremap = true, silent = true })
+map("n", "<C-\\>", ":TmuxNavigatePrevious<CR>", { noremap = true, silent = true })
