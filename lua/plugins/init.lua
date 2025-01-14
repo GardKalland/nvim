@@ -1,4 +1,14 @@
 return {
+
+  lazy = false,
+
+  {
+    "nvim-pack/nvim-spectre",
+    dependencies = { "nvim-lua/plenary.nvim" }, -- Required dependency
+    config = function()
+      require("spectre").setup()
+    end,
+  },
   {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
@@ -11,14 +21,20 @@ return {
       require "configs.lspconfig"
     end,
   },
+
+  {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  },
+
   {
     "christoomey/vim-tmux-navigator",
-    lazy = false, -- Load immediately
     config = function()
       -- Optional:
-      vim.g.tmux_navigator_disable_when_zoomed = 1 -- Disable navigation when a Tmux pane is zoomed
-      vim.g.tmux_navigator_preserve_zoom = 1 -- Ensure zoom state is preserved when navigating
-      vim.g.tmux_navigator_save_on_switch = 1 -- Save the Neovim state before switching panestional config if needed
+      vim.g.tmux_navigator_disable_when_zoomed = 1
+      vim.g.tmux_navigator_preserve_zoom = 1
+      vim.g.tmux_navigator_save_on_switch = 1
     end,
   },
   {

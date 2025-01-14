@@ -37,3 +37,18 @@ map("n", "<C-j>", ":TmuxNavigateDown<CR>", { noremap = true, silent = true })
 map("n", "<C-k>", ":TmuxNavigateUp<CR>", { noremap = true, silent = true })
 map("n", "<C-l>", ":TmuxNavigateRight<CR>", { noremap = true, silent = true })
 map("n", "<C-\\>", ":TmuxNavigatePrevious<CR>", { noremap = true, silent = true })
+
+-- Spectre mappings
+
+map("n", "<leader>S", ":lua require('spectre').open()<CR>", opts)
+
+-- Search current word
+map("n", "<leader>sw", ":lua require('spectre').open_visual({select_word=true})<CR>", opts)
+
+-- Search in visual selection
+map("v", "<leader>sw", ":lua require('spectre').open_visual()<CR>", opts)
+
+-- Search and replace in the current file
+map("n", "<leader>sf", ":lua require('spectre').open_file_search()<CR>", opts)
+
+map("n", "<Leader>re", vim.lsp.buf.rename, { desc = "Rename symbol" })
