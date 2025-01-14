@@ -11,7 +11,7 @@ local nvlsp = require "nvchad.configs.lspconfig"
 mason.setup()
 
 -- Automatically ensure the listed servers are installed
-local servers = { "html", "cssls", "ts_ls", "pyright", "svelte", "rust_analyzer" }
+local servers = { "html", "cssls", "ts_ls", "pyright", "svelte", "rust_analyzer", "eslint" }
 mason_lspconfig.setup {
   ensure_installed = servers,
 }
@@ -25,4 +25,23 @@ mason_lspconfig.setup_handlers {
       capabilities = nvlsp.capabilities,
     }
   end,
+}
+
+---@diagnostic disable: undefined-global
+-- Setup for ESLint
+lspconfig.eslint.setup {
+  on_attach = function(client, bufnr)
+    -- Enable document formatting (optional)
+    if client.server_capabilities.documentFormattingProvider then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format { async = false }
+        end,
+      })
+    end
+  end,
+  settings = {
+    format = { enable = true }, -- Enable formatting
+  },
 }
