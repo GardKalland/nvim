@@ -4,7 +4,7 @@ require("configs.masonlsp").setup()
 -- Custom overrides for specific servers, if needed
 local lspconfig = require "lspconfig"
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   on_attach = function(client, bufnr)
     local opts = { buffer = bufnr, silent = true }
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
