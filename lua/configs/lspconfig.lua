@@ -1,47 +1,13 @@
--- Load default configurations
-require("nvchad.configs.lspconfig").defaults()
+-- Load Mason-LSPConfig's default handlers via the masonlsp file
+require("configs.masonlsp").setup()
 
-local mason = require "mason"
-local mason_lspconfig = require "mason-lspconfig"
+-- Custom overrides for specific servers, if needed
 local lspconfig = require "lspconfig"
 
-local nvlsp = require "nvchad.configs.lspconfig"
-
--- Initialize Mason
-mason.setup()
-
--- Automatically ensure the listed servers are installed
-local servers = { "html", "cssls", "ts_ls", "pyright", "svelte", "rust_analyzer", "eslint" }
-mason_lspconfig.setup {
-  ensure_installed = servers,
-}
-
--- Use a default handler for all servers
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    lspconfig[server_name].setup {
-      on_attach = nvlsp.on_attach,
-      on_init = nvlsp.on_init,
-      capabilities = nvlsp.capabilities,
-    }
-  end,
-}
-
----@diagnostic disable: undefined-global
--- Setup for ESLint
-lspconfig.eslint.setup {
+lspconfig.tsserver.setup {
   on_attach = function(client, bufnr)
-    -- Enable document formatting (optional)
-    if client.server_capabilities.documentFormattingProvider then
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format { async = false }
-        end,
-      })
-    end
+    local opts = { buffer = bufnr, silent = true }
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   end,
-  settings = {
-    format = { enable = true }, -- Enable formatting
-  },
 }

@@ -1,72 +1,11 @@
 return {
-
-  lazy = false,
-
-  {
-    "nvim-pack/nvim-spectre",
-    dependencies = { "nvim-lua/plenary.nvim" }, -- Required dependency
-    config = function()
-      require("spectre").setup()
-    end,
-  },
   {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
 
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
-  },
-
-  {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-  },
-
-  {
-    "christoomey/vim-tmux-navigator",
-    config = function()
-      -- Optional:
-      vim.g.tmux_navigator_disable_when_zoomed = 1
-      vim.g.tmux_navigator_preserve_zoom = 1
-      vim.g.tmux_navigator_save_on_switch = 1
-    end,
-  },
-  {
-    "numToStr/Comment.nvim",
-    opts = {
-      toggler = {
-        line = "gcc", -- toggle line comment
-        block = "gbc", -- toggle block comment
-      },
-      opleader = {
-        line = "gc", -- line comment in visual mode
-        block = "gb", -- block comment in visual mode
-      },
-    },
-  },
-
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "html-lsp",
-        "css-lsp",
-        "prettier",
-      },
-    },
-  },
-
-  {
-    "lewis6991/gitsigns.nvim",
-  },
+  -- These are some examples, uncomment them if you want to see them work!
 
   {
     "nvim-treesitter/nvim-treesitter",
@@ -77,13 +16,42 @@ return {
         "vimdoc",
         "html",
         "css",
-        "typescript",
-        "svelte",
       },
-      highlight = { enable = true },
     },
   },
 
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "lua_ls",
+        "stylua",
+        "html",
+        "ts_ls",
+        "prettier",
+        "eslint",
+      },
+    },
+  },
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require "configs.masonlsp"
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require "configs.lspconfig"
+    end,
+  },
+  {
+    "rafamadriz/friendly-snippets",
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+  },
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
