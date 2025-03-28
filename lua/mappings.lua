@@ -12,6 +12,13 @@ map("i", "<C-k>", 'pumvisible() ? "<C-p>" : "<C-k>"', { noremap = true, silent =
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
+-- vim.api.nvim_buf_set_option(
+--   "n",
+--   "<Leader>ne",
+--   "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",
+--   { noremap = true, silent = true }
+-- )
+
 -- Splitting mappings
 map("n", "<Leader>h", ":split<CR>", { desc = "Split horizontal" })
 map("n", "<Leader>v", ":vsplit<CR>", { desc = "Split vertical" })
@@ -32,12 +39,12 @@ map("n", "<Leader>of", function()
 end, { desc = "Open current Folder in finder" })
 
 -- Tmux Navigator Mappings
-map("n", "<C-h>", ":TmuxNavigateLeft<CR>", { noremap = true, silent = true })
-map("n", "<C-j>", ":TmuxNavigateDown<CR>", { noremap = true, silent = true })
-map("n", "<C-k>", ":TmuxNavigateUp<CR>", { noremap = true, silent = true })
-map("n", "<C-l>", ":TmuxNavigateRight<CR>", { noremap = true, silent = true })
-map("n", "<C-\\>", ":TmuxNavigatePrevious<CR>", { noremap = true, silent = true })
-
+-- map("n", "<C-h>", ":TmuxNavigateLeft<CR>", { noremap = true, silent = true })
+-- map("n", "<C-j>", ":TmuxNavigateDown<CR>", { noremap = true, silent = true })
+-- map("n", "<C-k>", ":TmuxNavigateUp<CR>", { noremap = true, silent = true })
+-- map("n", "<C-l>", ":TmuxNavigateRight<CR>", { noremap = true, silent = true })
+-- map("n", "<C-\\>", ":TmuxNavigatePrevious<CR>", { noremap = true, silent = true })
+--
 -- Spectre mappings
 
 map("n", "<leader>S", ":lua require('spectre').open()<CR>", opts)

@@ -19,7 +19,30 @@ return {
       },
     },
   },
-
+  {
+    "mrjones2014/smart-splits.nvim",
+    init = function()
+      -- recommended mappings
+      -- resizing splits
+      -- these keymaps will also accept a range,
+      -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
+      vim.keymap.set("n", "<M-h>", require("smart-splits").resize_left)
+      vim.keymap.set("n", "<M-j>", require("smart-splits").resize_down)
+      vim.keymap.set("n", "<M-k>", require("smart-splits").resize_up)
+      vim.keymap.set("n", "<M-l>", require("smart-splits").resize_right)
+      -- moving between splits
+      vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
+      vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
+      vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
+      vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+      vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
+      -- swapping buffers between windows
+      vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
+      vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
+      vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
+      vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
+    end,
+  },
   {
     "williamboman/mason.nvim",
     opts = {
@@ -60,7 +83,43 @@ return {
       -- or leave it empty to use the default settings
     },
   },
-
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
   {
     "nvim-tree/nvim-tree.lua",
     requires = { "nvim-tree/nvim-web-devicons" }, -- optional, for file icons
